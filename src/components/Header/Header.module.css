@@ -1,0 +1,12 @@
+.header {
+    display: flex;
+    align-items: center;
+    grid-area: h;
+    background-color: #222;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.header img {
+    width: 59px;
+}

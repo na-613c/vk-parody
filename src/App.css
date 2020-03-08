@@ -1,0 +1,36 @@
+body {
+  background-color: #141518;
+  color: rgb(211, 226, 255);
+}
+
+.shadow {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.content {
+  grid-area: c;
+  background-color: #222;
+  margin-bottom: 20px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.app-wrapper {
+  margin: 0 auto;
+  width: 1200px;
+
+  display: grid;
+
+  grid-template-areas:
+    "h h"
+    "n c";
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-gap: 10px;
+}
+
+.padding {
+  padding: 20px;
+}
+

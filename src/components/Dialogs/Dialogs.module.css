@@ -1,0 +1,38 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialog {
+    padding: 20px;
+}
+
+.dialog .active {
+    color: #ffe96d;
+}
+
+.message {
+    padding: 10px;
+}
+
+.messages {
+    position: relative;
+    margin: 10px;
+    display: inline-block;
+    box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5),
+        1px 1px 5px rgba(255, 255, 255, 1);
+}
+
+.messages textarea {
+    width: 100%;
+}
+
+.inputText {
+    position: fixed;
+    bottom: 29px;
+} 
+
+.active {
+    color: rgb(255, 236, 64);
+    text-decoration: none;
+}

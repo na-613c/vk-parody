@@ -1,0 +1,11 @@
+
+.item {
+    color: wheat;
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+
+.item img{
+    width: 60px;
+    border-radius: 60px;
+}
