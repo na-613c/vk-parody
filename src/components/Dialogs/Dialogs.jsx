@@ -8,14 +8,26 @@ import { BrowserRouter, Route } from "react-router-dom"
 const Dialogs = (props) => {
 
     let dialogsElements = props.messagesPage.dialogData
-        .map((dialog) => <DialogItem name={dialog.name} id={dialog.id} />)
+        .map((dialog) => {
+            return (
+                <div key={dialog.id}>
+                    <DialogItem name={dialog.name} id={dialog.id} />
+                </div>
+            );
+        })
 
     let messagesElements = props.messagesPage.messagesData
-        .map((m) => <Message message={m.message} />)
+        .map((m, index) => {
+            return (
+                <div key={index}>
+                    <Message message={m.message} />
+                </div>
+            );
+        })
 
     let newMessageElement = React.createRef();
 
-    let postMessage = () =>{
+    let postMessage = () => {
         let text = newMessageElement.current.value;
         alert(text);
     }
@@ -23,7 +35,7 @@ const Dialogs = (props) => {
     return (
         <BrowserRouter>
             <div className={s.dialogs}>
-                <div className={s.dialogs_items}>
+                <div key={props.dialogsElements} className={s.dialogs_items}>
                     {dialogsElements}
                 </div>
                 <div className={s.messages}>
