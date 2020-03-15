@@ -24,10 +24,7 @@ const MyPosts = (props) => {
         props.dispatch({ type: 'UPDATE-NEW-POST-TEXT', newText: text })
     }
 
-    let focus = () => {
-        newPostElement.current.focus();
-    }
-
+//e => props.dispatch({ type: 'UPDATE-NEW-POST-TEXT', newText: e.target.value })
     return (
         <div className="padding" >
             My Post
@@ -36,9 +33,8 @@ const MyPosts = (props) => {
                 <textarea ref={newPostElement} cols="129" rows="4"
                     onChange={onPostChange}
                     value={props.newPostText} />
-                {/* autoFocus */}
                 <br />
-                <button onLoad={focus} onClick={addPost}>Add post</button>
+                <button onClick={addPost}>Add post</button>
                 <button>Remove</button>
             </div>
             <br />
