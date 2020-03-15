@@ -1,9 +1,11 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
+import { addPostActionCreator, updateNewPostTextAcrionCreator } from '../../../redux/state'
+
+
 
 const MyPosts = (props) => {
-
 
     let postElements = props.postData.map((post, index) => {
         return (
@@ -16,15 +18,15 @@ const MyPosts = (props) => {
     let newPostElement = React.createRef();
 
     let addPost = () => {
-        props.dispatch({ type: 'ADD-POST' })
+        props.dispatch(addPostActionCreator())
     }
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.dispatch({ type: 'UPDATE-NEW-POST-TEXT', newText: text })
+        let action = updateNewPostTextAcrionCreator(text)
+        props.dispatch(action)
     }
 
-//e => props.dispatch({ type: 'UPDATE-NEW-POST-TEXT', newText: e.target.value })
     return (
         <div className="padding" >
             My Post

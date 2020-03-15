@@ -1,5 +1,10 @@
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
+const SEND_MESSAGE = 'SEND-MESSAGE'
+
 let store = {
-    _state:{
+    _state: {
         messagesPage: {
             dialogData: [
                 { id: 1, name: "Ivan" },
@@ -17,48 +22,78 @@ let store = {
                 { id: 1, message: "Hi" },
                 { id: 2, message: "How is you work?" },
                 { id: 3, message: "Good" }
-            ]
+            ],
+            newMessageBody: ''
         },
         profilePage: {
             postData: [
                 { id: 1, message: "Hi, how are you", likesCount: 0 },
                 { id: 2, message: "It's my first post", likesCount: 23 }
             ],
-            newPostText: "test"
+            newPostText: ""
         }
     },
-    _callSubscriber(){
+    _callSubscriber() {
         console.log('State changed')
     },
 
-    getState(){
+    getState() {
         return this._state;
     },
     subscribe(observable) {
         this._callSubscriber = observable;
     },
 
-    dispatch(action){
-        if(action.type === 'ADD-POST'){
-            let size = this.getState().profilePage.postData.length + 1;
-            let newPost = {
-                id: size,
-                message: this._state.profilePage.newPostText,
-                likesCount: 0
-            };
-            this._state.profilePage.postData.push(newPost);
+    dispatch(action) {
+        switch (action.type) {
+            case ADD_POST:
+                let sizeDialogs = this.getState().profilePage.postData.length + 1;
+                let newPost = {
+                    id: sizeDialogs,
+                    message: this._state.profilePage.newPostText,
+                    likesCount: 0
+                };
+                this._state.profilePage.postData.push(newPost);
+                this._state.profilePage.newPostText = "";
+                this._callSubscriber(this.getState());
+                break;
 
-            this._state.profilePage.newPostText = "";
-            this._callSubscriber(this.getState());
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT'){
+            case UPDATE_NEW_POST_TEXT:
+                this._state.profilePage.newPostText = action.newText;
+                this._callSubscriber(this.getState());
+                break;
 
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this.getState());
+            case UPDATE_NEW_MESSAGE_BODY:
+                this._state.messagesPage.newMessageBody = action.newText;
+                this._callSubscriber(this.getState());
+                break;
+
+            case SEND_MESSAGE:
+                let sizeMessages = this.getState().messagesPage.messagesData.length + 1;
+                let newMessage = {
+                    id: sizeMessages,
+                    message: this._state.messagesPage.newMessageBody,
+                };
+                this._state.messagesPage.messagesData.push(newMessage);
+
+                this._state.messagesPage.newMessageBody = "";
+                this._callSubscriber(this.getState());
+                break;
+
+            default:
+                break;
         }
+
+
     }
 
 }
 
+export const addPostActionCreator = () => ({ type: ADD_POST })
+export const updateNewPostTextAcrionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
+
+export const postMessageCreator = () => ({ type: SEND_MESSAGE })
+export const updateNewMessageTextAcrionCreator = (text) => ({ type: UPDATE_NEW_MESSAGE_BODY, newText: text})
 
 export default store;
 
