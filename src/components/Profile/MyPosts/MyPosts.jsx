@@ -1,8 +1,7 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import { addPostActionCreator, updateNewPostTextAcrionCreator } from '../../../redux/state'
-
+import { addPostActionCreator, updateNewPostTextAcrionCreator, clearPostActionCreator } from '../../../redux/profile-reducer'
 
 
 const MyPosts = (props) => {
@@ -21,6 +20,10 @@ const MyPosts = (props) => {
         props.dispatch(addPostActionCreator())
     }
 
+    let clearPost = () => {
+        props.dispatch(clearPostActionCreator())
+    }
+
     let onPostChange = () => {
         let text = newPostElement.current.value;
         let action = updateNewPostTextAcrionCreator(text)
@@ -37,7 +40,7 @@ const MyPosts = (props) => {
                     value={props.newPostText} />
                 <br />
                 <button onClick={addPost}>Add post</button>
-                <button>Remove</button>
+                <button onClick={clearPost}>Remove</button>
             </div>
             <br />
             <div className={s.posts}>

@@ -2,8 +2,8 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import Message from './Message/Message';
 import DialogItem from './DialogItem/DialogItem';
-import { BrowserRouter, Route } from "react-router-dom"
-import { updateNewMessageTextAcrionCreator, postMessageCreator } from '../../redux/state'
+import { Route } from "react-router-dom"
+import { updateNewMessageTextAcrionCreator, postMessageCreator } from '../../redux/dialogs-reducer'
 
 
 

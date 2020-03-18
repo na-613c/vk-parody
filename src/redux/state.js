@@ -1,7 +1,7 @@
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
-const SEND_MESSAGE = 'SEND-MESSAGE'
+import profileReduser from './profile-reducer';
+import dialogsReduser from './dialogs-reducer';
+import sidebarReduser   from './sidebar-reducer';
+
 
 let store = {
     _state: {
@@ -31,7 +31,8 @@ let store = {
                 { id: 2, message: "It's my first post", likesCount: 23 }
             ],
             newPostText: ""
-        }
+        },
+        sidebar: {}
     },
     _callSubscriber() {
         console.log('State changed')
@@ -45,55 +46,14 @@ let store = {
     },
 
     dispatch(action) {
-        switch (action.type) {
-            case ADD_POST:
-                let sizeDialogs = this.getState().profilePage.postData.length + 1;
-                let newPost = {
-                    id: sizeDialogs,
-                    message: this._state.profilePage.newPostText,
-                    likesCount: 0
-                };
-                this._state.profilePage.postData.push(newPost);
-                this._state.profilePage.newPostText = "";
-                this._callSubscriber(this.getState());
-                break;
+        this._state.profilePage = profileReduser(this._state.profilePage, action);
+        this._state.messagesPage = dialogsReduser(this._state.messagesPage, action);
+        this._state.sidebar = sidebarReduser(this._state.sidebar, action);
 
-            case UPDATE_NEW_POST_TEXT:
-                this._state.profilePage.newPostText = action.newText;
-                this._callSubscriber(this.getState());
-                break;
-
-            case UPDATE_NEW_MESSAGE_BODY:
-                this._state.messagesPage.newMessageBody = action.newText;
-                this._callSubscriber(this.getState());
-                break;
-
-            case SEND_MESSAGE:
-                let sizeMessages = this.getState().messagesPage.messagesData.length + 1;
-                let newMessage = {
-                    id: sizeMessages,
-                    message: this._state.messagesPage.newMessageBody,
-                };
-                this._state.messagesPage.messagesData.push(newMessage);
-
-                this._state.messagesPage.newMessageBody = "";
-                this._callSubscriber(this.getState());
-                break;
-
-            default:
-                break;
-        }
-
-
+        this._callSubscriber(this.getState());
     }
-
 }
 
-export const addPostActionCreator = () => ({ type: ADD_POST })
-export const updateNewPostTextAcrionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
-
-export const postMessageCreator = () => ({ type: SEND_MESSAGE })
-export const updateNewMessageTextAcrionCreator = (text) => ({ type: UPDATE_NEW_MESSAGE_BODY, newText: text})
 
 export default store;
 
