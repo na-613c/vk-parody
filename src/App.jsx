@@ -9,14 +9,14 @@ import { Route } from "react-router-dom"
 const App = (props) => {
 
   return (
-      <div className="app-wrapper">
-        <Header />
-        <Navbar />
-        <div className="content">
-        <Route exact path="/dialogs" render={() => <Dialogs dispatch={props.dispatch} messagesPage={props.appState.messagesPage} />} />
-          <Route path="/profile" render={() => <Profile dispatch={props.dispatch} profilePage={props.appState.profilePage}/>} />
-        </div>
+    <div className="app-wrapper">
+      <Header />
+      <Navbar />
+      <div className="content">
+        <Route exact path="/dialogs" render={() => <Dialogs dispatch={props.dispatch} messagesPage={props.appState.dialogsReduser} />} />
+        <Route path="/profile" render={() =><Profile dispatch={props.dispatch} profilePage={props.appState.profileReduser} />} />
       </div>
+    </div>
   );
 }
 
