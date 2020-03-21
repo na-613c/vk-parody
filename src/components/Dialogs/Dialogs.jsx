@@ -8,7 +8,7 @@ import { updateNewMessageTextAcrionCreator, postMessageCreator } from '../../red
 
 
 const Dialogs = (props) => {
-
+    debugger
     let dialogsElements = props.messagesPage.dialogData
         .map((dialog) => {
             return (
@@ -30,14 +30,12 @@ const Dialogs = (props) => {
     let newMessageElement = React.createRef();
 
     let postMessage = () => {
-        let action = postMessageCreator();
-        props.dispatch(action)
+        props.onPostMessage();
     }
 
     let onMessageChange = () => {
         let text = newMessageElement.current.value;
-        let action = updateNewMessageTextAcrionCreator(text)
-        props.dispatch(action)
+        props.onMessageChange(text)
     }
 
     return (

@@ -1,11 +1,10 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import { addPostActionCreator, updateNewPostTextAcrionCreator, clearPostActionCreator } from '../../../redux/profile-reducer'
 
 
 const MyPosts = (props) => {
-
+    debugger
     let postElements = props.postData.map((post, index) => {
         return (
             <div key={index}>
@@ -17,17 +16,17 @@ const MyPosts = (props) => {
     let newPostElement = React.createRef();
 
     let addPost = () => {
-        props.dispatch(addPostActionCreator())
+        props.addPost();
     }
 
     let clearPost = () => {
-        props.dispatch(clearPostActionCreator())
+        props.clearPost();
     }
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        let action = updateNewPostTextAcrionCreator(text)
-        props.dispatch(action)
+        debugger
+        props.updateNewPostText(text)
     }
 
     return (

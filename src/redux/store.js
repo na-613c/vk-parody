@@ -25,7 +25,7 @@ let store = {
             ],
             newMessageBody: ''
         },
-        profilePage: {
+        profilePage: { 
             postData: [
                 { id: 1, message: "Hi, how are you", likesCount: 0 },
                 { id: 2, message: "It's my first post", likesCount: 23 }
