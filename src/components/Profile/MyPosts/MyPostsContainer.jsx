@@ -1,33 +1,34 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react';
 import MyPosts from './MyPosts';
-import { addPostActionCreator, updateNewPostTextAcrionCreator, clearPostActionCreator } from '../../../redux/profile-reducer'
+import {
+    addPostActionCreator,
+    clearPostActionCreator,
+    updateNewPostTextActionCreator
+} from '../../../redux/profile-reducer'
+import {connect} from "react-redux";
 
-
-const MyPostsContainer = (props) => {
-    debugger
-    let state = props.store.getState();
-
-    let onAddPost = () => {
-        props.store.dispatch(addPostActionCreator())
+const mapStateToProps = (state) => {
+    return {
+        postData: state.profilePage.postData,
+        newPostText: state.profilePage.newPostText
     }
+};
 
-    let onClearPost = () => {
-        props.store.dispatch(clearPostActionCreator())
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateNewPostText: (text) => {
+            dispatch(updateNewPostTextActionCreator(text));
+        },
+        addPost: () => {
+            dispatch(addPostActionCreator());
+        },
+        onClearPost: () => {
+            dispatch(clearPostActionCreator())
+        }
     }
+};
 
-    let onPostChange = (text) => {
-        let action = updateNewPostTextAcrionCreator(text)
-        props.store.dispatch(action)
-    }
-
-    return (
-        <MyPosts
-            updateNewPostText={onPostChange}
-            addPost={onAddPost}
-            clearPost={onClearPost}
-            postData={state.profilePage.postData}
-            newPostText={state.profilePage.newPostText} />);
-
-}
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
 
 export default MyPostsContainer;

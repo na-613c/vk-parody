@@ -4,50 +4,43 @@ import Post from './Post/Post';
 
 
 const MyPosts = (props) => {
-    debugger
-    let postElements = props.postData.map((post, index) => {
-        return (
-            <div key={index}>
-                <Post message={post.message} likesCount={`${post.likesCount} ♥`} />
-            </div>
-        );
-    })
+
+    let postElements = props.postData.map(
+        (post, index) => <Post key={index} message={post.message} likesCount={`${post.likesCount} ♥`}/>);
 
     let newPostElement = React.createRef();
 
     let addPost = () => {
         props.addPost();
-    }
+    };
 
     let clearPost = () => {
-        props.clearPost();
-    }
+        props.onClearPost();
+    };
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        debugger
         props.updateNewPostText(text)
-    }
+    };
 
     return (
-        <div className="padding" >
+        <div className="padding">
             My Post
-            <br />
+            <br/>
             <div>
                 <textarea ref={newPostElement} cols="129" rows="4"
-                    onChange={onPostChange}
-                    value={props.newPostText} />
-                <br />
+                          onChange={onPostChange}
+                          value={props.newPostText}/>
+                <br/>
                 <button onClick={addPost}>Add post</button>
                 <button onClick={clearPost}>Remove</button>
             </div>
-            <br />
+            <br/>
             <div className={s.posts}>
                 {postElements}
             </div>
         </div>
     );
-
-}
+};
 
 export default MyPosts;
