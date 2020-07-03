@@ -1,5 +1,7 @@
 .avatar img{
+    float: left;
     width:100px;
+    padding-right: 20px;
 }
 
 .background img {
@@ -9,4 +11,8 @@
 
 .item {
     color: wheat;
+}
+
+.about{
+    padding-left: 20px;
 }
