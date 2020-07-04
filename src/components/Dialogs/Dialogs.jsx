@@ -12,7 +12,7 @@ const Dialogs = (props) => {
     let postMessage = () => props.onPostMessage();
     let onMessageChange = (e) => props.onMessageChange(e.target.value);
 
-    if (props.isAuth === false) return <Redirect to={'login'}/>;
+    if (!props.isAuth) return <Redirect to={'login'}/>;
 
     return (
         <div className={s.dialogs}>
@@ -31,5 +31,6 @@ const Dialogs = (props) => {
             </div>
         </div>)
 };
+
 
 export default Dialogs;
