@@ -5,30 +5,10 @@ import Dialogs from './Dialogs';
 import {connect} from 'react-redux';
 
 
-// const oldDialogsContainer = (props) => {
-//     let state = props.store.getState();
-
-//     let onPostMessage = () => {
-//         let action = postMessageCreator();
-//         props.store.dispatch(action)
-//     }
-
-//     let onMessageChange = (text) => {
-//         let action = updateNewMessageTextActionCreator(text)
-//         props.store.dispatch(action)
-//     }
-
-//     return (
-//         <Dialogs
-//             onMessageChange={onMessageChange}
-//             onPostMessage={onPostMessage}
-//             messagesPage={state.messagesPage} />)
-// }
-
-
 let mapStateToProps = (state) => {
     return {
-        messagesPage: state.messagesPage
+        messagesPage: state.messagesPage,
+        isAuth: state.auth.isAuth
     }
 };
 let mapDispatchToProps = (dispatch) => {

@@ -2,25 +2,17 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import Message from './Message/Message';
 import DialogItem from './DialogItem/DialogItem';
-import {Route} from "react-router-dom"
+import {Redirect, Route} from "react-router-dom"
 
 
 const Dialogs = (props) => {
 
-    let dialogsElements = props.messagesPage.dialogData
-        .map((dialog) => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id}/>);
+    let dialogsElements = props.messagesPage.dialogData.map((d) => <DialogItem key={d.id} name={d.name} id={d.id}/>);
+    let messagesElements = props.messagesPage.messagesData.map((m) => <Message key={m.id} message={m.message}/>);
+    let postMessage = () => props.onPostMessage();
+    let onMessageChange = (e) => props.onMessageChange(e.target.value);
 
-    let messagesElements = props.messagesPage.messagesData
-        .map((m, index) => <Message key={index} message={m.message}/>);
-
-    let postMessage = () => {
-        props.onPostMessage();
-    };
-
-    let onMessageChange = (e) => {
-        let text = e.target.value;
-        props.onMessageChange(text)
-    };
+    if (props.isAuth === false) return <Redirect to={'login'}/>;
 
     return (
         <div className={s.dialogs}>
