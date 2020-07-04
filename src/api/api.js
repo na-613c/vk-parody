@@ -1,13 +1,13 @@
 import * as axios from "axios";
 
-// let cookie = true;
-let cookie = false;
+let cookie = true;
+// let cookie = false;
 
 const instance = axios.create({
     withCredentials: cookie,
     baseURL: 'https://social-network.samuraijs.com/api/1.0',
     headers: {
-        "API-KEY": "b1775b2f-c3a5-4509-8dc9-90b5629de7c3"
+        "API-KEY": "be43e656-f2be-4c2c-8047-fb1d382ca968"
     }
 });
 
