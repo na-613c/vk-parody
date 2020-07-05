@@ -15,6 +15,7 @@ const ProfileInfo = (props) => {
     }
 
     let photos;
+
     if (!props.profile.photos.large) photos = photosUri;
     else photos = props.profile.photos.large;
 
@@ -30,24 +31,23 @@ const ProfileInfo = (props) => {
                     <img src={photos} alt="photos"/>
                     <h1> {props.profile.fullName} </h1>
                     {/*<p> {props.profile.aboutMe} </p>*/}
-                    <ProfileStatus status={'Hello my friends'}/>
+                    <ProfileStatus status={props.status}
+                                   updateStatus={props.updateStatus}/>
                 </p>
             </div>
             <div className={s.about}>
                 {lookingForAJobDescription}
-                {/*<p>*/}
-                {/*    <b>Контакты:</b>*/}
-                {/*    <p> facebook : {props.profile.contacts.facebook}</p>*/}
-                {/*    <p> website : {props.profile.contacts.website}</p>*/}
-                {/*    <p> vk : {props.profile.contacts.vk}</p>*/}
-                {/*    <p> twitter : {props.profile.contacts.twitter}</p>*/}
-                {/*    <p> instagram : {props.profile.contacts.instagram}</p>*/}
-                {/*    <p> youtube : {props.profile.contacts.youtube}</p>*/}
-                {/*    <p> github : {props.profile.contacts.github}</p>*/}
-                {/*    <p> mainLink : {props.profile.contacts.mainLink}</p>*/}
-                {/*</p>*/}
-
-
+                <p>
+                    <b>Контакты:</b>
+                    <p> facebook : {props.profile.contacts.facebook}</p>
+                    <p> website : {props.profile.contacts.website}</p>
+                    <p> vk : {props.profile.contacts.vk}</p>
+                    <p> twitter : {props.profile.contacts.twitter}</p>
+                    <p> instagram : {props.profile.contacts.instagram}</p>
+                    <p> youtube : {props.profile.contacts.youtube}</p>
+                    <p> github : {props.profile.contacts.github}</p>
+                    <p> mainLink : {props.profile.contacts.mainLink}</p>
+                </p>
             </div>
         </div>);
 };
