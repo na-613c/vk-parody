@@ -2,6 +2,7 @@ import React from 'react';
 import s from './ProfileInfo.module.css';
 import Preloader from "../../Common/Preloader";
 import photosUri from "../../../assets/images/user.jpg"
+import ProfileStatus from "../ProfileStatus";
 
 
 const ProfileInfo = (props) => {
@@ -28,22 +29,24 @@ const ProfileInfo = (props) => {
                 <p>
                     <img src={photos} alt="photos"/>
                     <h1> {props.profile.fullName} </h1>
-                    <p> {props.profile.aboutMe} </p>
+                    {/*<p> {props.profile.aboutMe} </p>*/}
+                    <ProfileStatus status={'Hello my friends'}/>
                 </p>
             </div>
             <div className={s.about}>
                 {lookingForAJobDescription}
-                <p>
-                    <b>Контакты:</b>
-                    <p> facebook : {props.profile.contacts.facebook}</p>
-                    <p> website : {props.profile.contacts.website}</p>
-                    <p> vk : {props.profile.contacts.vk}</p>
-                    <p> twitter : {props.profile.contacts.twitter}</p>
-                    <p> instagram : {props.profile.contacts.instagram}</p>
-                    <p> youtube : {props.profile.contacts.youtube}</p>
-                    <p> github : {props.profile.contacts.github}</p>
-                    <p> mainLink : {props.profile.contacts.mainLink}</p>
-                </p>
+                {/*<p>*/}
+                {/*    <b>Контакты:</b>*/}
+                {/*    <p> facebook : {props.profile.contacts.facebook}</p>*/}
+                {/*    <p> website : {props.profile.contacts.website}</p>*/}
+                {/*    <p> vk : {props.profile.contacts.vk}</p>*/}
+                {/*    <p> twitter : {props.profile.contacts.twitter}</p>*/}
+                {/*    <p> instagram : {props.profile.contacts.instagram}</p>*/}
+                {/*    <p> youtube : {props.profile.contacts.youtube}</p>*/}
+                {/*    <p> github : {props.profile.contacts.github}</p>*/}
+                {/*    <p> mainLink : {props.profile.contacts.mainLink}</p>*/}
+                {/*</p>*/}
+
 
             </div>
         </div>);

@@ -1,10 +1,10 @@
 import * as axios from "axios";
 
-let cookie = true;
-// let cookie = false;
+let isUseCookie = true;
+// let isUseCookie = false;
 
 const instance = axios.create({
-    withCredentials: cookie,
+    withCredentials: isUseCookie,
     baseURL: 'https://social-network.samuraijs.com/api/1.0',
     headers: {
         "API-KEY": "be43e656-f2be-4c2c-8047-fb1d382ca968"
