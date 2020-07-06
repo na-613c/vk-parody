@@ -31,13 +31,13 @@ let Users = (props) => {
             })}
         </div>
         {props.users.map(u => <div key={u.id}>
+            <hr/>
                 <span>
                     <div>
                         <NavLink to={`/profile/${u.id}`}>
                             <img className={s.userPhoto} alt='test'
                                  src={u.photos.small != null ? u.photos.small : userPhoto}/>
                         </NavLink>
-
                     </div>
                     <div>
                         {u.followed
@@ -50,14 +50,11 @@ let Users = (props) => {
                         }
                     </div>
                 </span>
-            <span>
-                    <div>{u.name}</div>
-                    <div>{u.status}</div>
+                <span>
+                    <div>Имя : {u.name}</div>
+                    <div>{u.status ? `Статус : ${u.status}` : `Статус не задан`}</div>
                 </span>
-            <span>
-                        <div>{"u.location.country"}</div>
-                        <div>{"u.location.city"}</div>
-                </span>
+            <hr/>
         </div>)}
     </div>
 };
