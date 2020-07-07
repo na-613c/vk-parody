@@ -27,26 +27,29 @@ const ProfileInfo = (props) => {
                     alt=""/>
             </div>
             <div className={`${s.avatar} padding`}>
-                <p>
+                <div>
                     <img src={photos} alt="photos"/>
-                    <h1> {props.profile.fullName} </h1>
-                    {/*<p> {props.profile.aboutMe} </p>*/}
+                    <h1> {props.profile.fullName} {props.profile.userId}</h1>
                     <ProfileStatus status={props.status}
                                    updateStatus={props.updateStatus}/>
-                </p>
+                </div>
             </div>
             <div className={s.about}>
                 {lookingForAJobDescription}
                 <p>
-                    <b>Контакты:</b>
-                    <p> facebook : {props.profile.contacts.facebook}</p>
-                    <p> website : {props.profile.contacts.website}</p>
-                    <p> vk : {props.profile.contacts.vk}</p>
-                    <p> twitter : {props.profile.contacts.twitter}</p>
-                    <p> instagram : {props.profile.contacts.instagram}</p>
-                    <p> youtube : {props.profile.contacts.youtube}</p>
-                    <p> github : {props.profile.contacts.github}</p>
-                    <p> mainLink : {props.profile.contacts.mainLink}</p>
+                    <b>Контакты:</b>{
+                    props.profile.contacts.facebook !== null &&
+                    <div>
+                        <p> facebook : {props.profile.contacts.facebook}</p>
+                        <p> website : {props.profile.contacts.website}</p>
+                        <p> vk : {props.profile.contacts.vk}</p>
+                        <p> twitter : {props.profile.contacts.twitter}</p>
+                        <p> instagram : {props.profile.contacts.instagram}</p>
+                        <p> youtube : {props.profile.contacts.youtube}</p>
+                        <p> github : {props.profile.contacts.github}</p>
+                        <p> mainLink : {props.profile.contacts.mainLink}</p>
+                    </div>
+                }
                 </p>
             </div>
         </div>);

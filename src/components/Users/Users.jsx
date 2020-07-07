@@ -26,7 +26,7 @@ let Users = (props) => {
     return <div>
         <div>
             {pages.map(p => {
-                return <span key={p} className={props.currentPage === p && s.selectedPage}
+                return <span key={p} className={props.currentPage === p ? s.selectedPage : ''}
                              onClick={() => props.onPageChanged(p)}> -- {p} -- </span>
             })}
         </div>
@@ -52,6 +52,7 @@ let Users = (props) => {
                 </span>
                 <span>
                     <div>Имя : {u.name}</div>
+                    <div>{u.id && `Пользователь № ${u.id}` }</div>
                     <div>{u.status ? `Статус : ${u.status}` : `Статус не задан`}</div>
                 </span>
             <hr/>
