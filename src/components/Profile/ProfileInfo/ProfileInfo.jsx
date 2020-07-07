@@ -29,7 +29,7 @@ const ProfileInfo = (props) => {
             <div className={`${s.avatar} padding`}>
                 <div>
                     <img src={photos} alt="photos"/>
-                    <h1> {props.profile.fullName} {props.profile.userId}</h1>
+                    <h1> {props.profile.fullName} ____ id:{props.profile.userId}</h1>
                     <ProfileStatus status={props.status}
                                    updateStatus={props.updateStatus}/>
                 </div>
@@ -37,9 +37,9 @@ const ProfileInfo = (props) => {
             <div className={s.about}>
                 {lookingForAJobDescription}
                 <p>
-                    <b>Контакты:</b>{
+                    {
                     props.profile.contacts.facebook !== null &&
-                    <div>
+                    <div><b>Контакты:</b>
                         <p> facebook : {props.profile.contacts.facebook}</p>
                         <p> website : {props.profile.contacts.website}</p>
                         <p> vk : {props.profile.contacts.vk}</p>
