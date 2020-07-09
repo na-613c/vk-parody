@@ -5,19 +5,19 @@ import photosUri from "../../../assets/images/user.jpg"
 import ProfileStatusWithHooks from "../ProfileStatusWithHooks";
 
 
-const ProfileInfo = (props) => {
+const ProfileInfo = ({profile,status,updateStatus}) => {
 
-    if (!props.profile) return <Preloader/>;
+    if (!profile) return <Preloader/>;
 
     let lookingForAJobDescription = "";
-    if (props.profile.lookingForAJob) {
-        lookingForAJobDescription = `Поиск работы: ${props.profile.lookingForAJobDescription}`;
+    if (profile.lookingForAJob) {
+        lookingForAJobDescription = `Поиск работы: ${profile.lookingForAJobDescription}`;
     }
 
     let photos;
 
-    if (!props.profile.photos.large) photos = photosUri;
-    else photos = props.profile.photos.large;
+    if (!profile.photos.large) photos = photosUri;
+    else photos = profile.photos.large;
 
     return (
         <div>
@@ -29,27 +29,27 @@ const ProfileInfo = (props) => {
             <div className={`${s.avatar} padding`}>
                 <div>
                     <img src={photos} alt="photos"/>
-                    <h1> {props.profile.fullName} ____ id:{props.profile.userId}</h1>
-                    <ProfileStatusWithHooks status={props.status}
-                                   updateStatus={props.updateStatus}/>
+                    <h1> {profile.fullName} ____ id:{profile.userId}</h1>
+                    <ProfileStatusWithHooks status={status}
+                                            updateStatus={updateStatus}/>
                 </div>
             </div>
             <div className={s.about}>
                 {lookingForAJobDescription}
                 <p>
                     {
-                    props.profile.contacts.facebook !== null &&
-                    <div><b>Контакты:</b>
-                        <p> facebook : {props.profile.contacts.facebook}</p>
-                        <p> website : {props.profile.contacts.website}</p>
-                        <p> vk : {props.profile.contacts.vk}</p>
-                        <p> twitter : {props.profile.contacts.twitter}</p>
-                        <p> instagram : {props.profile.contacts.instagram}</p>
-                        <p> youtube : {props.profile.contacts.youtube}</p>
-                        <p> github : {props.profile.contacts.github}</p>
-                        <p> mainLink : {props.profile.contacts.mainLink}</p>
-                    </div>
-                }
+                        profile.contacts.facebook !== null &&
+                        <div><b>Контакты:</b>
+                            <p> facebook : {profile.contacts.facebook}</p>
+                            <p> website : {profile.contacts.website}</p>
+                            <p> vk : {profile.contacts.vk}</p>
+                            <p> twitter : {profile.contacts.twitter}</p>
+                            <p> instagram : {profile.contacts.instagram}</p>
+                            <p> youtube : {profile.contacts.youtube}</p>
+                            <p> github : {profile.contacts.github}</p>
+                            <p> mainLink : {profile.contacts.mainLink}</p>
+                        </div>
+                    }
                 </p>
             </div>
         </div>);

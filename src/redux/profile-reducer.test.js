@@ -4,8 +4,9 @@ import profileReducer, {addPostActionCreator, deletePost} from "./profile-reduce
 
 let state = {
     postData: [
-        {id: 1, message: "Hi, how are you", likesCount: 0},
-        {id: 2, message: 'It\'s my first post', likesCount: 23}
+        {id: 1, message: 'It\'s my first post', likesCount: 23},
+        {id: 2, message: "Hi, how are you", likesCount: 0},
+        {id: 3, message: "T_E_S_T", likesCount: 404},
     ]
 };
 
@@ -36,7 +37,7 @@ it(`after deleting length shouldn't be decrement if id is incorrect`, () => {
     let newState = profileReducer(state, action);
 
     // 3. expectation
-    expect(newState.postData.length).toBe(4);
+    expect(newState.postData.length).toBe(3);
 });
 
 

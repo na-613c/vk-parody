@@ -15,7 +15,6 @@ import Preloader from "./components/Common/Preloader";
 
 class App extends Component {
     componentDidMount() {
-        //getAuthUserData
         this.props.initializeApp();
     }
 
