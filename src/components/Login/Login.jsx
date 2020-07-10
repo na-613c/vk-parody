@@ -8,7 +8,7 @@ import {Redirect} from "react-router-dom";
 import s from "../Common/FormsControls/FormsControls.module.css"
 
 const LoginForm = ({handleSubmit, error}) => {
-    return <div className="shadow">
+    return <div>
         <form onSubmit={handleSubmit}>
             {CreateField("Email", "email", Input, [required])}
             {CreateField("Password", "password", Input, [required], {type: "password"})}
@@ -38,7 +38,8 @@ const Login = (props) => {
         return <Redirect to={"/profile"}/>
     }
 
-    return <div>
+    return <div className="content padding">
+        <br/>
         <h1>LOGIN</h1>
         <LoginReduxForm onSubmit={onSubmit}/>
     </div>
