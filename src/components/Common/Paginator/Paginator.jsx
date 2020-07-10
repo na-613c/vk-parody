@@ -1,32 +1,26 @@
 import React from "react";
-import s from './myPaginator.module.css'
+import {Pagination} from '@material-ui/lab';
+import s from './myPaginator.module.css';
 
-let Paginator = ({totalUsersCount,pageSize,currentPage,onPageChanged}) => {
+
+let Paginator = ({totalUsersCount, pageSize, currentPage, onPageChanged}) => {
 
     let pagesCount = Math.ceil(totalUsersCount / pageSize);
-    let pages = [];
-    let startPage = 1;
 
-    if (currentPage - 5 < 1) startPage = 1;
-    else startPage = currentPage - 5;
-
-    if (currentPage + 10 >= pagesCount) {
-        for (let i = 0; i < 5; i++) {
-            if (currentPage + i === pagesCount) startPage = currentPage - 10 + i;
-        }
-    } else startPage = currentPage - 5;
-
-    for (let i = 1; i <= pagesCount; i++) {
-        if (i === 1 || i === pagesCount) pages.push(i);
-        if (i > startPage && pages.length < 10 && i !== 1 && i !== pagesCount) pages.push(i);
-    }
+    const handleChangePage = (event, newPage) => {
+        onPageChanged(newPage);
+    };
 
     return (
-        <div>
-            {pages.map(p => {
-                return <span key={p} className={currentPage === p ? s.selectedPage : ''}
-                             onClick={() => onPageChanged(p)}> -- {p} -- </span>
-            })}
+        <div className={"shadow "+s.page}>
+                <Pagination
+                    boundaryCount={1}
+                    variant="outlined"
+                    page={currentPage}
+                    count={pagesCount}
+                    onChange={handleChangePage}
+                    siblingCount={5}
+                />
         </div>)
 };
 

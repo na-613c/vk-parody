@@ -20,7 +20,7 @@ const ProfileInfo = ({profile,status,updateStatus}) => {
     else photos = profile.photos.large;
 
     return (
-        <div>
+        <div className="shadow">
             <div className={s.background}>
                 <img
                     src="https://images.squarespace-cdn.com/content/v1/565823b5e4b0fad364e2ac13/1496734842059-Y0A2D2ZQF2H7FM2S4VOV/ke17ZwdGBToddI8pDm48kBbv7tO7RGtBX-ydkfg2CiMUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2dsOb7-vecUQi1e65oRxjclR2CgaESKdXAV0jRJD0mxpLZtJ3qR9G2BYeA0wOAaeYNg/Banner-Books-1800x400.jpg?format=2500w"
@@ -36,9 +36,9 @@ const ProfileInfo = ({profile,status,updateStatus}) => {
             </div>
             <div className={s.about}>
                 {lookingForAJobDescription}
-                <p>
+                <div>
                     {
-                        profile.contacts.facebook !== null &&
+                        profile.contacts.facebook !== null ?
                         <div><b>Контакты:</b>
                             <p> facebook : {profile.contacts.facebook}</p>
                             <p> website : {profile.contacts.website}</p>
@@ -48,9 +48,9 @@ const ProfileInfo = ({profile,status,updateStatus}) => {
                             <p> youtube : {profile.contacts.youtube}</p>
                             <p> github : {profile.contacts.github}</p>
                             <p> mainLink : {profile.contacts.mainLink}</p>
-                        </div>
+                        </div> : "данные для связи не указаны"
                     }
-                </p>
+                </div>
             </div>
         </div>);
 };

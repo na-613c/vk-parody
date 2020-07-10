@@ -3,7 +3,7 @@ import Paginator from "../Common/Paginator/Paginator";
 import User from "./User";
 
 let Users = ({totalUsersCount, pageSize, currentPage, onPageChanged, users, followingInProgress, unfollow, follow}) => {
-    return <div>
+    return <div >
         <Paginator currentPage={currentPage}
                    totalUsersCount={totalUsersCount}
                    pageSize={pageSize}

@@ -13,19 +13,20 @@ const MyPosts = React.memo(props => {
     let postElements = [...props.postData]
         .reverse()
         .map(
-        (post, index) => <Post key={index} message={post.message} likesCount={`${post.likesCount} ♥`}/>);
+            (post, index) => <Post key={index} message={post.message} likesCount={`${post.likesCount} ♥`}/>);
 
     let addPost = (values) => props.addPost(values.newPostText);
 
-    return (
-        <div className="padding">
-            My Post
-            <br/>
-            <AddNewPostFormReact onSubmit={addPost}/>
-            <br/>
+    return (<div>
+            <div className="padding shadow">
+                My Post
+                <br/>
+                <AddNewPostFormReact onSubmit={addPost}/>
+            </div>
             <div className={s.posts}>
                 {postElements}
             </div>
+
         </div>
     );
 });

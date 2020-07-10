@@ -1,4 +1,5 @@
-.selectedPage {
-    font-weight: bold;
-    color: #ffec40;
+.page{
+    background: #ff7555;
+    padding: 20px;
+    margin-bottom: 10px;
 }

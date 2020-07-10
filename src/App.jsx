@@ -3,14 +3,15 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import UsersContainer from "./components/Users/UsersContainer";
 import DialogsContainer from './components/Dialogs/DialogsContainer';
-import {Route, withRouter} from "react-router-dom"
+import {BrowserRouter, Route, withRouter} from "react-router-dom"
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
-import {connect} from "react-redux";
+import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/Common/Preloader";
+import store from "./redux/redux-store";
 
 
 class App extends Component {
@@ -26,7 +27,7 @@ class App extends Component {
                 <div className="app-wrapper">
                     <HeaderContainer/>
                     <Navbar/>
-                    <div className="content">
+                    <div>
                         <Route path="/dialogs"
                                render={() => <DialogsContainer/>}/>
 
@@ -49,8 +50,21 @@ const mapStateToProps = (state) => ({
     initialized: state.app.initialized
 });
 
-
-export default compose(
+const AppContainer = compose(
     withRouter,
     connect(mapStateToProps, {initializeApp})
 )(App);
+
+
+let MainApp = (props) => {
+    return (
+        <BrowserRouter>
+            <Provider store={store}>
+                <AppContainer/>
+            </Provider>
+        </BrowserRouter>
+    )
+
+};
+
+export default MainApp;

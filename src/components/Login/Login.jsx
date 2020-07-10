@@ -8,20 +8,21 @@ import {Redirect} from "react-router-dom";
 import s from "../Common/FormsControls/FormsControls.module.css"
 
 const LoginForm = ({handleSubmit, error}) => {
-    return <form onSubmit={handleSubmit}>
-        {CreateField("Email", "email", Input, [required])}
-        {CreateField("Password", "password", Input, [required], {type: "password"})}
-        {CreateField(null, "rememberMe", Input, null, {type: "checkbox"},"remember me")}
-        {error &&
-        <div className={s.formSummaryError}>
-            {error}
-        </div>
-        }
-        <div>
-            <button>Log in</button>
-        </div>
-    </form>
-
+    return <div className="shadow">
+        <form onSubmit={handleSubmit}>
+            {CreateField("Email", "email", Input, [required])}
+            {CreateField("Password", "password", Input, [required], {type: "password"})}
+            {CreateField(null, "rememberMe", Input, null, {type: "checkbox"}, "remember me")}
+            {error &&
+            <div className={s.formSummaryError}>
+                {error}
+            </div>
+            }
+            <div>
+                <button>Log in</button>
+            </div>
+        </form>
+    </div>
 };
 
 const LoginReduxForm = reduxForm({
