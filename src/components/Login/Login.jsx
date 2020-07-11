@@ -7,12 +7,14 @@ import {login, logout} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 import s from "../Common/FormsControls/FormsControls.module.css"
 
-const LoginForm = ({handleSubmit, error}) => {
+const LoginForm = ({captchaUrl, handleSubmit, error}) => {
     return <div>
         <form onSubmit={handleSubmit}>
             {CreateField("Email", "email", Input, [required])}
             {CreateField("Password", "password", Input, [required], {type: "password"})}
             {CreateField(null, "rememberMe", Input, null, {type: "checkbox"}, "remember me")}
+            {captchaUrl && <img src={captchaUrl} alt={'captcha'}/>}
+            {captchaUrl && CreateField("Symbols from image", "captcha", Input, [required], {})}
             {error &&
             <div className={s.formSummaryError}>
                 {error}
@@ -29,25 +31,23 @@ const LoginReduxForm = reduxForm({
     form: 'login'
 })(LoginForm);
 
-const Login = (props) => {
+const Login = ({login, isAuth, captchaUrl}) => {
     const onSubmit = (formData) => {
-        props.login(formData.email, formData.password, formData.email.rememberMe);
+        login(formData.email, formData.password, formData.email.rememberMe, formData.captcha);
     };
 
-    if (props.isAuth) {
-        return <Redirect to={"/profile"}/>
-    }
+    if (isAuth) return <Redirect to={"/profile"}/>;
 
     return <div className="content padding">
         <br/>
         <h1>LOGIN</h1>
-        <LoginReduxForm onSubmit={onSubmit}/>
+        <LoginReduxForm onSubmit={onSubmit} captchaUrl={captchaUrl}/>
     </div>
-
 };
 
 const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    captchaUrl: state.auth.captchaUrl
 });
 
 export default connect(mapStateToProps, {login, logout})(Login);
