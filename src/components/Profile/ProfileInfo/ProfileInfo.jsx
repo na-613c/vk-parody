@@ -5,7 +5,7 @@ import photosUri from "../../../assets/images/user.jpg"
 import ProfileStatusWithHooks from "../ProfileStatusWithHooks";
 
 
-const ProfileInfo = ({profile,status,updateStatus}) => {
+const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
 
     if (!profile) return <Preloader/>;
 
@@ -14,10 +14,11 @@ const ProfileInfo = ({profile,status,updateStatus}) => {
         lookingForAJobDescription = `Поиск работы: ${profile.lookingForAJobDescription}`;
     }
 
-    let photos;
-
-    if (!profile.photos.large) photos = photosUri;
-    else photos = profile.photos.large;
+    const onMainPhotoSelected = (e) => {
+        if (e.target.files.length) {
+            savePhoto(e.target.files[0])
+        }
+    };
 
     return (
         <div className="shadow">
@@ -28,10 +29,16 @@ const ProfileInfo = ({profile,status,updateStatus}) => {
             </div>
             <div className={`${s.avatar} padding`}>
                 <div>
-                    <img src={photos} alt="photos"/>
+                    <div>
+                        <img src={profile.photos.large || photosUri} alt="photos"/>
+                        {isOwner && <input type={'file'} onChange={onMainPhotoSelected}/>}
+                    </div>
+
+
                     <h1> {profile.fullName} ____ id:{profile.userId}</h1>
                     <ProfileStatusWithHooks status={status}
-                                            updateStatus={updateStatus}/>
+                                            updateStatus={updateStatus}
+                                            isOwner={isOwner}/>
                 </div>
             </div>
             <div className={s.about}>
@@ -39,16 +46,16 @@ const ProfileInfo = ({profile,status,updateStatus}) => {
                 <div>
                     {
                         profile.contacts.facebook !== null ?
-                        <div><b>Контакты:</b>
-                            <p> facebook : {profile.contacts.facebook}</p>
-                            <p> website : {profile.contacts.website}</p>
-                            <p> vk : {profile.contacts.vk}</p>
-                            <p> twitter : {profile.contacts.twitter}</p>
-                            <p> instagram : {profile.contacts.instagram}</p>
-                            <p> youtube : {profile.contacts.youtube}</p>
-                            <p> github : {profile.contacts.github}</p>
-                            <p> mainLink : {profile.contacts.mainLink}</p>
-                        </div> : "данные для связи не указаны"
+                            <div><b>Контакты:</b>
+                                <p> facebook : {profile.contacts.facebook}</p>
+                                <p> website : {profile.contacts.website}</p>
+                                <p> vk : {profile.contacts.vk}</p>
+                                <p> twitter : {profile.contacts.twitter}</p>
+                                <p> instagram : {profile.contacts.instagram}</p>
+                                <p> youtube : {profile.contacts.youtube}</p>
+                                <p> github : {profile.contacts.github}</p>
+                                <p> mainLink : {profile.contacts.mainLink}</p>
+                            </div> : "данные для связи не указаны"
                     }
                 </div>
             </div>
