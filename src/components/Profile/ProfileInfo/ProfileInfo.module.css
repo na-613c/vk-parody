@@ -1,18 +1,30 @@
-.avatar img{
+.avatar img {
     float: left;
-    width:100px;
+    width: 100px;
     padding-right: 20px;
 }
 
 .background img {
-    width:100%;
-    height:200px;
+    width: 100%;
+    height: 200px;
 }
 
 .item {
     color: wheat;
 }
 
-.about{
+.about,
+.contact {
     padding-left: 20px;
+}
+
+.aboutForm {
+    padding-left: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    background-color: rgba(240, 241, 255, 0.2);
+}
+
+.error {
+    color: red;
 }

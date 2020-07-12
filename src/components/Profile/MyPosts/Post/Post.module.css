@@ -9,3 +9,14 @@
     width: 60px;
     border-radius: 60px;
 }
+
+.like{
+    text-align: end;
+}
+.content{
+    display: flex;
+    align-items: normal;
+}
+.message{
+    padding-left: 20px;
+}
