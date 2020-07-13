@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import UsersContainer from "./components/Users/UsersContainer";
-import {HashRouter, Route, withRouter} from "react-router-dom"
+import {BrowserRouter, Redirect, Route, Switch, withRouter} from "react-router-dom"
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
-import {initializeApp} from "./redux/app-reducer";
+import {initializeApp, setError} from "./redux/app-reducer";
 import Preloader from "./components/Common/Preloader";
 import store from "./redux/redux-store";
 import {withSuspense} from "./hoc/withSuspense";
@@ -17,8 +17,25 @@ const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileCo
 
 
 class App extends Component {
+
+    catchAllUnhandledErrors = (error) => {
+        this.props.setError(`${error}`);
+    };
+
     componentDidMount() {
         this.props.initializeApp();
+        window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props !== prevState && this.props.globalError != null) {
+            alert(this.props.globalError);
+            this.props.setError(null);
+        }
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors);
     }
 
     render() {
@@ -30,17 +47,29 @@ class App extends Component {
                     <HeaderContainer/>
                     <Navbar/>
                     <div>
-                        <Route path="/dialogs"
-                               render={withSuspense(DialogsContainer)}/>
+                        <Switch>
+                            <Route exact path='/'
+                                   render={() => <Redirect to={"/profile"}/>}/>
 
-                        <Route path="/profile/:userId?"
-                               render={withSuspense(ProfileContainer)}/>
+                            <Route path="/dialogs"
+                                   render={withSuspense(DialogsContainer)}/>
 
-                        <Route path="/users"
-                               render={() => <UsersContainer/>}/>
+                            <Route path="/profile/:userId?"
+                                   render={withSuspense(ProfileContainer)}/>
 
-                        <Route path="/login"
-                               render={() => <Login/>}/>
+                            <Route path="/users"
+                                   render={() => <UsersContainer/>}/>
+
+                            <Route path="/login"
+                                   render={() => <Login/>}/>
+
+                            <Route path="/news"
+                                   render={() => <Preloader/>}/>
+
+
+                            <Route path="*"
+                                   render={() => <div>404 NOT FOUND</div>}/>
+                        </Switch>
                     </div>
                 </div>
             );
@@ -49,22 +78,23 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    initialized: state.app.initialized
+    initialized: state.app.initialized,
+    globalError: state.app.globalError,
 });
 
 const AppContainer = compose(
     withRouter,
-    connect(mapStateToProps, {initializeApp})
+    connect(mapStateToProps, {initializeApp, setError})
 )(App);
 
 
 let MainApp = (props) => {
     return (
-        <HashRouter>
+        <BrowserRouter>
             <Provider store={store}>
                 <AppContainer/>
             </Provider>
-        </HashRouter>
+        </BrowserRouter>
     )
 
 };

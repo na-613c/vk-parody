@@ -2,6 +2,7 @@ import * as axios from "axios";
 
 let isUseCookie = true;
 // let isUseCookie = false;
+//"API-KEY": "be43e656-f2be-4c2c-8047-fb1d382ca968"
 
 const instance = axios.create({
     withCredentials: isUseCookie,

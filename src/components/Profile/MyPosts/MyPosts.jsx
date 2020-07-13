@@ -9,11 +9,12 @@ const maxLength10 = maxLengthCreator(10);
 
 
 const MyPosts = React.memo(props => {
-
     let postElements = [...props.postData]
         .reverse()
-        .map(
-            (post, index) => <Post key={index} message={post.message} likesCount={`${post.likesCount} ♥`}/>);
+        .map((post, index) => <Post key={index}
+                                    photos={props.photos}
+                                    message={post.message}
+                                    likesCount={`${post.likesCount} ♥`}/>);
 
     let addPost = (values) => props.addPost(values.newPostText);
 
@@ -26,7 +27,6 @@ const MyPosts = React.memo(props => {
             <div className={s.posts}>
                 {postElements}
             </div>
-
         </div>
     );
 });

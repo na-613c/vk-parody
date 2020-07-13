@@ -4,6 +4,7 @@ import Preloader from "../../Common/Preloader";
 import photosUri from "../../../assets/images/user.jpg"
 import ProfileStatusWithHooks from "../ProfileStatusWithHooks";
 import ProfileDataForm from "./ProfileDataForm";
+import background from "../../../assets/images/background.jpg"
 
 const dataNotSpecified = " Данные не указаны";
 
@@ -25,7 +26,7 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
         <div className="shadow">
             <div className={s.background}>
                 <img
-                    src="https://images.squarespace-cdn.com/content/v1/565823b5e4b0fad364e2ac13/1496734842059-Y0A2D2ZQF2H7FM2S4VOV/ke17ZwdGBToddI8pDm48kBbv7tO7RGtBX-ydkfg2CiMUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2dsOb7-vecUQi1e65oRxjclR2CgaESKdXAV0jRJD0mxpLZtJ3qR9G2BYeA0wOAaeYNg/Banner-Books-1800x400.jpg?format=2500w"
+                    src={background}
                     alt=""/>
             </div>
             <div className={`${s.avatar} padding`}>

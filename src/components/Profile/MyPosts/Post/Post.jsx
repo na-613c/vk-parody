@@ -1,14 +1,13 @@
 import React from 'react';
 import s from './Post.module.css';
 
-
-const Post = ({message, likesCount}) => {
+const Post = ({message, likesCount, photos}) => {
     return (
         <div className={s.item + " padding content"}>
             <div className={s.content}>
                 <img
-                    src="https://social-network.samuraijs.com/activecontent/images/users/9089/user.jpg?v=6"
-                    alt=""/>
+                    src={photos}
+                    alt="photos"/>
                 <div className={s.message}>
                     {message}
                 </div>
