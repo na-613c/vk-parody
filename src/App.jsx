@@ -11,6 +11,7 @@ import {initializeApp, setError} from "./redux/app-reducer";
 import Preloader from "./components/Common/Preloader";
 import store from "./redux/redux-store";
 import {withSuspense} from "./hoc/withSuspense";
+import NotFound from "./components/NotFound/NotFound";
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
@@ -63,12 +64,8 @@ class App extends Component {
                             <Route path="/login"
                                    render={() => <Login/>}/>
 
-                            <Route path="/news"
-                                   render={() => <Preloader/>}/>
-
-
                             <Route path="*"
-                                   render={() => <div>404 NOT FOUND</div>}/>
+                                   render={() => <NotFound/>}/>
                         </Switch>
                     </div>
                 </div>

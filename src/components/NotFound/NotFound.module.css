@@ -1,10 +1,18 @@
-import React from 'react';
+.notFound{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 10px;
+}
+.notFound img{
+    float: right;
+    margin-left: auto;
+}
+.notFound h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 100px;
+}
 
 
-const NotFound = () =>{
-    return(
-        <div className={"shadow"}>Страница не существует</div>
-    )
-};
 
-export default NotFound;

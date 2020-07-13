@@ -83,7 +83,7 @@ const Contact = ({contactTitle, contactValue}) => {
         <b>{contactTitle}</b>:
         {!contactValue
             ? dataNotSpecified
-            : <a href={contactValue} target="_blank"> {contactValue}</a>
+            : <a href={contactValue} target="_blank" rel="noopener noreferrer"> {contactValue}</a>
         }
     </div>)
 };
