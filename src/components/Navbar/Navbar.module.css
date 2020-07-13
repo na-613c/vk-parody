@@ -17,6 +17,6 @@ a {
 }
 
 .active {
-    color: rgb(255, 236, 64);
+    color: #ff7555;
     text-decoration: none;
 }
