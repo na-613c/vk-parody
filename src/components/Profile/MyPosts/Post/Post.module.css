@@ -1,36 +1,31 @@
-
 .item {
     color: wheat;
-    margin-top:10px;
+    margin-top: 10px;
     margin-bottom: 10px;
     width: inherit;
 }
 
-
-
-.content{
+.content {
     display: grid;
-    grid-template-areas:
-            "photo message"
-            " photo like";
+    grid-template-areas: "photo message" ". like ";
     grid-template-rows: 60px 1fr;
     grid-template-columns: 60px 1fr;
     height: 100%;
     width: 100%;
 }
 
-.like{
+.like {
     text-align: right;
     grid-area: like;
 }
 
-
-.photo{
+.photo {
     grid-area: photo;
     width: 60px;
     border-radius: 60px;
 }
-.message{
+
+.message {
     grid-area: message;
     padding-left: 20px;
     text-overflow: clip
