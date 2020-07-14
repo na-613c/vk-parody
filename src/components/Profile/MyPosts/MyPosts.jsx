@@ -20,7 +20,8 @@ const MyPosts = React.memo(props => {
 
     return (<div>
             <div className="padding shadow">
-                My Post
+                <b>You can add a new post:</b>
+                <br/>
                 <br/>
                 <AddNewPostFormReact onSubmit={addPost}/>
             </div>
@@ -33,13 +34,13 @@ const MyPosts = React.memo(props => {
 
 const AddNewPostForm = (props) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={props.handleSubmit} className={s.form} >
             <Field component={Textarea}
                    name={'newPostText'}
                    placeholder="enter your post"
-                   validate={[required, maxLength300]}/>
-            <br/>
-            <button>Add post</button>
+                   validate={[required, maxLength300]}
+                   className={s.textarea} />
+            <button className={s.btnAdd} >Add post</button>
         </form>
     )
 };
