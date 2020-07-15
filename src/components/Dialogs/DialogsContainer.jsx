@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import {postMessageCreator} from '../../redux/dialogs-reducer'
+import {postMessageThunkCreator} from '../../redux/dialogs-reducer'
 import Dialogs from './Dialogs';
 import {connect} from 'react-redux';
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
@@ -13,14 +13,7 @@ let mapStateToProps = (state) => {
     }
 };
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        onPostMessage: (newMessageBody) => dispatch(postMessageCreator(newMessageBody))
-    }
-};
-
-
 export default compose(
-    connect(mapStateToProps, mapDispatchToProps),
+    connect(mapStateToProps, {postMessageThunkCreator}),
     withAuthRedirect
 )(Dialogs);

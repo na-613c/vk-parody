@@ -37,5 +37,8 @@ const dialogsReducer = (state = initialState, action) => {
 
 export const postMessageCreator = (newMessageBody) => ({type: SEND_MESSAGE, newMessageBody});
 
+export const postMessageThunkCreator = (newMessageBody) => (dispatch) => {
+    dispatch(postMessageCreator(newMessageBody));
+};
 
 export default dialogsReducer;

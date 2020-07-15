@@ -14,7 +14,10 @@ const Dialogs = (props) => {
 
     let dialogsElements = props.messagesPage.dialogData.map((d) => <DialogItem key={d.id} name={d.name} id={d.id}/>);
     let messagesElements = props.messagesPage.messagesData.map((m) => <Message key={m.id} message={m.message}/>);
-    let addNewMessage = (values) => props.onPostMessage(values.newMessageBody);
+
+    let addNewMessage = (values) => {
+        return  props.postMessageThunkCreator(values.newMessageBody)
+    };
 
     if (!props.isAuth) return <Redirect to={'login'}/>;
 
@@ -25,7 +28,7 @@ const Dialogs = (props) => {
             </div>
             <div>
                 <div className={s.messages}>
-                    <div className={s.allMessages}>
+                    <div className={s.allMessages +" target"}>
                         <Route path="/dialogs" component={() => messagesElements}/>
                     </div>
                     <div className="padding">

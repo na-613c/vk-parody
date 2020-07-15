@@ -33,6 +33,12 @@ const MyPosts = React.memo(props => {
 });
 
 const AddNewPostForm = (props) => {
+
+    // let handleSubmit = (event) => {
+    //     props.handleSubmit().bind(this);
+    //     event.target.reset();
+    // };
+
     return (
         <form onSubmit={props.handleSubmit} className={s.form} >
             <Field component={Textarea}
