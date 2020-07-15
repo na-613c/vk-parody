@@ -20,15 +20,21 @@ const Dialogs = (props) => {
 
     return (
         <div className={s.dialogs + " content"}>
-            <div key={props.dialogsElements} className={s.dialogs_items}>
+            <div key={props.dialogsElements} className={s.dialogElements}>
                 {dialogsElements}
             </div>
-            <div className={s.messages}>
-                <Route path="/dialogs" component={() => messagesElements}/>
+            <div>
+                <div className={s.messages}>
+                    <div className={s.allMessages}>
+                        <Route path="/dialogs" component={() => messagesElements}/>
+                    </div>
+                    <div className="padding">
+                        <AddMessageFormRedux onSubmit={addNewMessage}/>
+                    </div>
+                </div>
+
             </div>
-            <div className="padding">
-                <AddMessageFormRedux onSubmit={addNewMessage}/>
-            </div>
+
         </div>)
 };
 

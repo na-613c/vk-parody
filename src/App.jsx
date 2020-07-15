@@ -29,7 +29,7 @@ class App extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props !== prevState && this.props.globalError != null) {
+        if (this.props !== prevState && this.props.globalError != null && !prevState) {
             alert(this.props.globalError);
             this.props.setError(null);
         }
