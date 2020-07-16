@@ -1,0 +1,16 @@
+@import "../../../Style/Color";
+
+.formControl.error input,
+.formControl.error textarea {
+    border: 2px solid $error;
+}
+
+.formControl.error span {
+    color: $error;
+}
+
+.formSummaryError {
+    border: $error 1px solid;
+    padding: 5px;
+    color: $error;
+}

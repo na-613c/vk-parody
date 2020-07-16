@@ -1,4 +1,6 @@
 .item {
+    display: grid;
+    grid-template-columns: 60px 1fr;
     color: wheat;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -7,9 +9,7 @@
 
 .content {
     display: grid;
-    grid-template-areas: "photo message" ". like ";
-    grid-template-rows: 60px 1fr;
-    grid-template-columns: 60px 1fr;
+    grid-template-areas: "message" "like ";
     height: 100%;
     width: 100%;
 }

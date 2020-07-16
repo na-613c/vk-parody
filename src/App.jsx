@@ -29,7 +29,7 @@ class App extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props !== prevState && this.props.globalError != null && !prevState) {
+        if (this.props !== prevState && this.props.globalError != null ) {
             alert(this.props.globalError);
             this.props.setError(null);
         }
@@ -77,6 +77,7 @@ class App extends Component {
 const mapStateToProps = (state) => ({
     initialized: state.app.initialized,
     globalError: state.app.globalError,
+    auth: state.auth.isAuth,
 });
 
 const AppContainer = compose(
