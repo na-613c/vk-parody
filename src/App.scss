@@ -1,9 +1,12 @@
 @import "Style/Active";
 @import "Style/Color";
 
+@mixin myColor() {
+  //color: rgb(random(255), random(255), random(255));
+}
 
 h1 {
-  @include activeLink;
+  @include myColor;
 }
 
 
@@ -34,7 +37,6 @@ body {
 .padding {
   padding: 20px;
 }
-
 
 button {
   position: relative;
@@ -72,17 +74,20 @@ button.MuiButtonBase-root, .MuiPaginationItem-root, .MuiPaginationItem-page, .Mu
   0 0 1px 1px rgba(0, 1, 6, .1);
 }
 
-@mixin Mui-selected ($red,$green,$blue) {
+@mixin Mui-selected($color,$shift) {
+
+
   button.Mui-selected:hover {
-    background: linear-gradient(rgb($red, $green,$blue), rgb(($red - 15), $green,$blue)) rgb($red, $green,$blue);
+    background: linear-gradient($color, darken($color, $shift), $color);
   }
 
   button.Mui-selected {
-    background: linear-gradient(rgb(($red - 15),$green,$blue), rgb(($red - 30), $green,$blue)) rgb(($red - 15), $green,$blue);
+    background: linear-gradient(darken($color, $shift), darken($color, $shift*2), darken($color, $shift));
   }
 }
 
-@include Mui-selected(255, 90, 50);
+//@include Mui-selected(rgb(255, 75, 50), 5);
+@include Mui-selected($activeColor, 5);
 
 
 input, textarea {
