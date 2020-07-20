@@ -4,15 +4,13 @@ import {Field} from "redux-form";
 import cn from 'classnames'
 
 
-const FormControl = ({input, meta: {touched, error}, children}) => {
+const FormControl = ({meta: {touched, error}, children}) => {
     const hasError = touched && error;
     return (
-        //s.formControl + " " + (hasError ? s.error : '')
-
-        <div className={cn(s.formControl,{[s.error]:hasError})}>
+        <span className={cn(s.formControl,{[s.error]:hasError})}>
             {children}
             {hasError && <span>{error}</span>}
-        </div>
+        </span>
     )
 };
 
@@ -28,7 +26,7 @@ export const Input = (props) => {
 
 export const CreateField = (placeholder, name, component, validate, props = {}, text = "") => {
     return (
-        <div>
+        <div className={s.space}>
             <Field autoComplete="off"
                    placeholder={placeholder}
                    name={name}

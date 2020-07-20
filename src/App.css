@@ -69,7 +69,14 @@ button.Mui-selected {
   background: linear-gradient(#ff603c, #ff4c22, #ff603c);
 }
 
-input, textarea {
+input {
+  border: 2px double black;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+textarea {
   border: 2px double black;
   background-color: rgba(255, 255, 255, 0.8);
   padding-left: 5px;

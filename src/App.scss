@@ -89,11 +89,17 @@ button.MuiButtonBase-root, .MuiPaginationItem-root, .MuiPaginationItem-page, .Mu
 //@include Mui-selected(rgb(255, 75, 50), 5);
 @include Mui-selected($activeColor, 5);
 
-
-input, textarea {
+@mixin input {
   border: 2px double black;
   background-color: rgba(255, 255, 255, 0.8);
   padding-left: 5px;
   padding-right: 5px;
+}
+
+input{
+  @include input;
+}
+textarea {
+  @include input;
   width: 250px;
 }

@@ -74,7 +74,6 @@ export const getStatus = (userId) => async (dispatch) => {
     dispatch(setStatus(response.data));
 };
 export const updateStatus = (status) => async (dispatch) => {
-    try {
         const response = await profileAPI.updateStatus(status);
         if (response.data.resultCode === 0) {
             dispatch(setStatus(status));
@@ -82,14 +81,10 @@ export const updateStatus = (status) => async (dispatch) => {
         } else {
             dispatch(setError(response.data.messages[0] + ''));
         }
-    } catch (e) {
-        dispatch(setError(e + ''));
-    }
+
 
 };
 export const savePhoto = (file) => async (dispatch) => {
-    try {
-
         const response = await profileAPI.savePhoto(file);
         if (response.data.resultCode === 0) {
             dispatch(savePhotoSuccess(response.data.data.photos));
@@ -97,12 +92,8 @@ export const savePhoto = (file) => async (dispatch) => {
         } else {
             dispatch(setError(response.data.messages[0] + ''));
         }
-    } catch (e) {
-        dispatch(setError(e + ''));
-    }
 };
 export const saveProfile = (profile) => async (dispatch, getState) => {
-    try {
         const userId = getState().auth.id;
         const response = await profileAPI.saveProfile(profile);
         if (response.data.resultCode === 0) {
@@ -111,9 +102,6 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
             dispatch(stopSubmit("editProfile", {_error: response.data.messages[0]}));
             return Promise.reject(response.data.messages[0]);
         }
-    } catch (e) {
-        dispatch(setError(e + ''));
-    }
 };
 
 export default profileReducer;
