@@ -1,0 +1,157 @@
+.avatar img {
+    width: 100px;
+    height: 100px;
+    padding-right: 20px;
+}
+
+.avatar input {
+    padding-right: 20px;
+}
+
+.padding {
+    padding: 20px 20px 0 20px;
+}
+
+.avatar {
+    grid-area: avatar;
+}
+
+.contentProfile {
+    grid-area: contentProfile;
+}
+
+.profile {
+    display: grid;
+    grid-template-areas: "avatar contentProfile";
+    grid-template-rows: 1fr;
+    grid-template-columns: 120px 1fr;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.customFileUpload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    width: 88px;
+}
+
+.customFileUpload img {
+    width: 20px;
+    height: 20px;
+    padding-right: 5px;
+}
+
+.background img {
+    width: 100%;
+    height: 200px;
+}
+
+.aboutForm {
+    padding-left: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    background-color: rgba(240, 241, 255, 0.2);
+}
+
+.error {
+    color: red;
+}
+
+.content {
+    display: grid;
+    grid-template-areas: "about contacts";
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 2fr;
+    padding-top: 20px;
+}
+
+.aboutForm {
+    display: grid;
+    grid-template-areas: "aboutEdit contacts";
+    grid-auto-rows: 1fr;
+    grid-template-columns: 1fr 2fr;
+}
+
+.aboutEdit {
+    grid-area: aboutEdit;
+    display: grid;
+    grid-template-areas: "edit" "name" "lfj" "skills" "aboutMe";
+    grid-auto-rows: 1fr;
+    grid-template-columns: 1fr;
+}
+
+.about {
+    padding-left: 20px;
+    grid-area: about;
+    display: grid;
+    grid-template-areas: "edit" "lfj" "skills" " aboutMe";
+    grid-auto-rows: 1fr;
+    grid-template-columns: 1fr;
+}
+
+.name {
+    grid-area: name;
+}
+
+.edit {
+    grid-area: edit;
+}
+
+.edit,
+.aboutEdit button {
+    width: 120px;
+    height: 40px;
+}
+
+.lfj input{
+    text-align: left;
+    width: 13px;
+}
+
+.lfjEdit {
+    display: grid;
+    grid-template-columns: auto auto ;
+}
+
+.lfj {
+    grid-area: lfj;
+    text-align: left;
+}
+
+.skills {
+    grid-area: skills;
+}
+
+.aboutMe {
+    grid-area: aboutMe;
+}
+
+.contacts {
+    padding: 0 20px 0 20px;
+    grid-area: contacts;
+}
+
+.contactsItems {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    text-align: left;
+}
+
+.tooltip span {
+    font-size: 0.4em;
+    display: none;
+    position: absolute;
+    padding-left: 10px;
+    width: 130px;
+}
+
+.tooltip:hover span {
+    display: inline;
+    position: absolute;
+    color: #ffffff;
+}

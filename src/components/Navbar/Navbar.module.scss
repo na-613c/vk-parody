@@ -1,0 +1,23 @@
+@import "../../Style/Color.scss";
+@import "../../Style/Active";
+
+.nav {
+    grid-area: n;
+    margin-bottom: 10px;
+    @include shadowColor;
+
+}
+
+.item {
+    color: $sidebarItems;
+}
+
+a {
+    cursor: pointer;
+    color: $sidebarItems;
+    text-decoration: none;
+}
+
+.active {
+    @include activeLink;
+}

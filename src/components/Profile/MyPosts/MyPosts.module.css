@@ -1,0 +1,21 @@
+.posts{
+    color:white;
+}
+
+
+.form {
+    display: grid;
+    grid-template-areas: "textarea btnAdd";
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 100px;
+}
+
+.textarea {
+    grid-area: textarea;
+    width: 90%;
+}
+
+.btnAdd {
+    grid-area: btnAdd;
+}
+

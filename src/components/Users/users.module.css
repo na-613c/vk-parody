@@ -1,0 +1,52 @@
+.userPhoto {
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+}
+
+.marginBottom10 {
+    margin-bottom: 10px;
+}
+
+.user {
+    display: grid;
+    grid-template-areas: "photo info ";
+    grid-template-rows: 100px 1fr;
+    grid-template-columns: 100px 1fr;
+    text-align: center;
+}
+
+.info {
+    grid-area: info;
+    display: grid;
+    grid-template-areas: " name follow" " id  . " " status .";
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    padding-left: 20px;
+
+}
+
+.follow {
+    text-align: right;
+    grid-area: follow;
+}
+
+.photo {
+    grid-area: photo;
+}
+
+.name {
+    grid-area: name;
+    text-align: left;
+}
+
+.id {
+    grid-area: id;
+    text-align: left;
+}
+
+.status {
+    grid-area: status;
+    text-align: left;
+}

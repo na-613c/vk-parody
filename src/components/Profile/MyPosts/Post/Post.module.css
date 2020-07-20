@@ -1,0 +1,32 @@
+.item {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    color: wheat;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: inherit;
+}
+
+.content {
+    display: grid;
+    grid-template-areas: "message" "like ";
+    height: 100%;
+    width: 100%;
+}
+
+.like {
+    text-align: right;
+    grid-area: like;
+}
+
+.photo {
+    grid-area: photo;
+    width: 60px;
+    border-radius: 60px;
+}
+
+.message {
+    grid-area: message;
+    padding-left: 20px;
+    text-overflow: clip
+}
