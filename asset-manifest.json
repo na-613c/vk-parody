@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/vk-parody/static/css/main.05b3fe81.chunk.css",
+    "main.js": "/vk-parody/static/js/main.2727c336.chunk.js",
+    "main.js.map": "/vk-parody/static/js/main.2727c336.chunk.js.map",
+    "runtime-main.js": "/vk-parody/static/js/runtime-main.5f0e0bd9.js",
+    "runtime-main.js.map": "/vk-parody/static/js/runtime-main.5f0e0bd9.js.map",
+    "static/js/2.6ac7154a.chunk.js": "/vk-parody/static/js/2.6ac7154a.chunk.js",
+    "static/js/2.6ac7154a.chunk.js.map": "/vk-parody/static/js/2.6ac7154a.chunk.js.map",
+    "static/css/3.0e918592.chunk.css": "/vk-parody/static/css/3.0e918592.chunk.css",
+    "static/js/3.c39c9a2f.chunk.js": "/vk-parody/static/js/3.c39c9a2f.chunk.js",
+    "static/js/3.c39c9a2f.chunk.js.map": "/vk-parody/static/js/3.c39c9a2f.chunk.js.map",
+    "static/css/4.162348ad.chunk.css": "/vk-parody/static/css/4.162348ad.chunk.css",
+    "static/js/4.176a396b.chunk.js": "/vk-parody/static/js/4.176a396b.chunk.js",
+    "static/js/4.176a396b.chunk.js.map": "/vk-parody/static/js/4.176a396b.chunk.js.map",
+    "index.html": "/vk-parody/index.html",
+    "precache-manifest.e34acb833c2a7e01174e68288df3f328.js": "/vk-parody/precache-manifest.e34acb833c2a7e01174e68288df3f328.js",
+    "service-worker.js": "/vk-parody/service-worker.js",
+    "static/css/3.0e918592.chunk.css.map": "/vk-parody/static/css/3.0e918592.chunk.css.map",
+    "static/css/4.162348ad.chunk.css.map": "/vk-parody/static/css/4.162348ad.chunk.css.map",
+    "static/css/main.05b3fe81.chunk.css.map": "/vk-parody/static/css/main.05b3fe81.chunk.css.map",
+    "static/js/2.6ac7154a.chunk.js.LICENSE.txt": "/vk-parody/static/js/2.6ac7154a.chunk.js.LICENSE.txt",
+    "static/media/background.jpg": "/vk-parody/static/media/background.82500b16.jpg",
+    "static/media/not_found.gif": "/vk-parody/static/media/not_found.e9ff6ff5.gif",
+    "static/media/preloader.svg": "/vk-parody/static/media/preloader.c84bc4ba.svg",
+    "static/media/upload.svg": "/vk-parody/static/media/upload.c5d3b40c.svg",
+    "static/media/user.jpg": "/vk-parody/static/media/user.af88856f.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5f0e0bd9.js",
+    "static/js/2.6ac7154a.chunk.js",
+    "static/css/main.05b3fe81.chunk.css",
+    "static/js/main.2727c336.chunk.js"
+  ]
+}
