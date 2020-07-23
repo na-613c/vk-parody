@@ -40,7 +40,7 @@ class UsersContainer extends React.Component {
     }
 }
 
-let mapStateProps = (state) => {
+let mapStateToProps = (state) => {
     return {
         users: getUsersSuperSelector(state),
         pageSize: getPageSize(state),
@@ -51,7 +51,7 @@ let mapStateProps = (state) => {
     }
 };
 
-export default connect(mapStateProps, {
+export default connect(mapStateToProps, {
     follow,
     unfollow,
     setCurrentPage,

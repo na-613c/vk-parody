@@ -1,7 +1,7 @@
 import React from 'react';
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {getStatus, getUserProfile, savePhoto, updateStatus,saveProfile} from "../../redux/profile-reducer";
+import {getStatus, getUserProfile, savePhoto, saveProfile, updateStatus} from "../../redux/profile-reducer";
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 
@@ -18,6 +18,9 @@ class ProfileContainer extends React.Component {
         }
         this.props.getUserProfile(userId);
         this.props.getStatus(userId);
+        this.setState({
+            isLoading: true
+        });
     }
 
     componentDidMount() {
@@ -26,7 +29,7 @@ class ProfileContainer extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.match.params.userId !== prevProps.match.params.userId) {
-            this.refreshProfile()
+            this.refreshProfile();
         }
     }
 
@@ -40,6 +43,7 @@ class ProfileContainer extends React.Component {
                          updateStatus={this.props.updateStatus}
                          savePhoto={this.props.savePhoto}
                          saveProfile={this.props.saveProfile}
+                         isLoading={this.props.isLoading}
                 />
             </div>);
     }
@@ -49,10 +53,11 @@ let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
     userId: state.auth.id,
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    isLoading: state.profilePage.isLoadingProfile
 });
 
 export default compose(
-    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus, savePhoto,saveProfile}),
+    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus, savePhoto, saveProfile}),
     withRouter
 )(ProfileContainer);

@@ -27,9 +27,7 @@ let User = ({user, followingInProgress, unfollow, follow}) => {
                 <div className={s.name}>Имя : {user.name}</div>
                 <div className={s.id}>{user.id && `Пользователь № ${user.id}`}</div>
                 <div className={s.status}>{user.status ? `Статус : ${user.status}` : `Статус не задан`}</div>
-
             </div>
-
         </div>)
 };
 
