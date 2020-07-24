@@ -1,7 +1,7 @@
 import React from 'react';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
-import Preloader from "../Common/Preloader";
+import Preloader from "../Common/Preloader/Preloader";
 
 
 const Profile = ({isLoading, profile, status, updateStatus, isOwner, savePhoto, saveProfile}) => {

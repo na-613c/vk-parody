@@ -8,7 +8,7 @@ import Login from "./components/Login/Login";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import {initializeApp, setError} from "./redux/app-reducer";
-import Preloader from "./components/Common/Preloader";
+import Preloader from "./components/Common/Preloader/Preloader";
 import store from "./redux/redux-store";
 import {withSuspense} from "./hoc/withSuspense";
 import NotFound from "./components/NotFound/NotFound";

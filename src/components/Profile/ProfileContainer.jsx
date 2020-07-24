@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {getStatus, getUserProfile, savePhoto, saveProfile, updateStatus} from "../../redux/profile-reducer";
@@ -6,48 +6,31 @@ import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 
 
-class ProfileContainer extends React.Component {
+let ProfileContainer = (props) => {
 
-    refreshProfile() {
-        let userId = this.props.match.params.userId;
+    useEffect(() => {
+        let userId = props.match.params.userId;
         if (!userId) {
-            userId = this.props.userId;
-            if (!userId) {
-                this.props.history.push("/login");
-            }
+            userId = props.userId;
+            if (!userId) props.history.push("/login");
         }
-        this.props.getUserProfile(userId);
-        this.props.getStatus(userId);
-        this.setState({
-            isLoading: true
-        });
-    }
+        props.getUserProfile(userId);
+        props.getStatus(userId);
+    }, [props.match.params.userId]);
 
-    componentDidMount() {
-        this.refreshProfile()
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.match.params.userId !== prevProps.match.params.userId) {
-            this.refreshProfile();
-        }
-    }
-
-    render() {
-        return (
-            <div>
-                <Profile {...this.props}
-                         isOwner={!this.props.match.params.userId}
-                         profile={this.props.profile}
-                         status={this.props.status}
-                         updateStatus={this.props.updateStatus}
-                         savePhoto={this.props.savePhoto}
-                         saveProfile={this.props.saveProfile}
-                         isLoading={this.props.isLoading}
-                />
-            </div>);
-    }
-}
+    return (
+        <div>
+            <Profile {...props}
+                     isOwner={!props.match.params.userId}
+                     profile={props.profile}
+                     status={props.status}
+                     updateStatus={props.updateStatus}
+                     savePhoto={props.savePhoto}
+                     saveProfile={props.saveProfile}
+                     isLoading={props.isLoading}
+            />
+        </div>);
+};
 
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,

@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import Message from './Message/Message';
 import DialogItem from './DialogItem/DialogItem';
-import {Redirect, Route} from "react-router-dom"
+import {Route} from "react-router-dom"
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../utils/validators/validators";
 import {Textarea} from "../Common/FormsControls/FormsControls";
@@ -10,20 +10,18 @@ import {Textarea} from "../Common/FormsControls/FormsControls";
 
 const maxLength100 = maxLengthCreator(100);
 
-const Dialogs = (props) => {
+const Dialogs = ({messagesPage,postMessageThunkCreator,}) => {
 
-    let dialogsElements = props.messagesPage.dialogData.map((d) => <DialogItem key={d.id} name={d.name} id={d.id}/>);
-    let messagesElements = props.messagesPage.messagesData.map((m) => <Message key={m.id} message={m.message}/>);
+    let dialogsElements = messagesPage.dialogData.map((d) => <DialogItem key={d.id} name={d.name} id={d.id}/>);
+    let messagesElements = messagesPage.messagesData.map((m) => <Message key={m.id} message={m.message}/>);
 
     let addNewMessage = (values) => {
-        return  props.postMessageThunkCreator(values.newMessageBody)
+        return  postMessageThunkCreator(values.newMessageBody)
     };
-
-    if (!props.isAuth) return <Redirect to={'login'}/>;
 
     return (
         <div className={s.dialogs + " content"}>
-            <div key={props.dialogsElements} className={s.dialogElements}>
+            <div className={s.dialogElements}>
                 {dialogsElements}
             </div>
             <div>
@@ -35,9 +33,7 @@ const Dialogs = (props) => {
                         <AddMessageFormRedux onSubmit={addNewMessage}/>
                     </div>
                 </div>
-
             </div>
-
         </div>)
 };
 

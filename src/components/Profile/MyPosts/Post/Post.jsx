@@ -15,14 +15,10 @@ const Post = ({message, likesCount, photos}) => {
                 </div>
                 <div className={s.like}>
                     {likesCount}
-
                 </div>
-
             </div>
-
         </div>
     );
-
 };
 
 export default Post;
