@@ -9,6 +9,7 @@ const maxLength300 = maxLengthCreator(300);
 
 
 const MyPosts = React.memo(props => {
+
     let postElements = [...props.postData]
         .reverse()
         .map((post, index) => <Post key={index}
@@ -16,7 +17,7 @@ const MyPosts = React.memo(props => {
                                     message={post.message}
                                     likesCount={`${post.likesCount} ♥`}/>);
 
-    let addPost = (values) => props.addPost(values.newPostText);    
+    let addPost = (values) => props.addPost(values.newPostText);
 
     return (<div>
             <div className="padding shadow">

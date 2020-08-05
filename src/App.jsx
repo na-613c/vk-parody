@@ -94,7 +94,6 @@ let MainApp = () => {
             </Provider>
         </BrowserRouter>
     )
-
 };
 
 export default MainApp;
