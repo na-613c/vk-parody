@@ -73,6 +73,12 @@ export const deletePost = (postId) => ({type: DELETE_POST, postId});
 export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos});
 export const loadingProfileSuccess = (isLoading) => ({type: LOADING_PROFILE_SUCCESS, isLoading});
 
+export const deleteUserPost = (postId) => (dispatch) =>{
+    dispatch(deletePost(postId));
+};
+export const addUserPost = (newPostText) => (dispatch) =>{
+    dispatch(addPostActionCreator(newPostText));
+};
 export const getUserProfile = (userId) => async (dispatch) => {
     dispatch(loadingProfileSuccess(true));
     const response = await profileAPI.getProfile(userId);
@@ -90,16 +96,16 @@ export const updateStatus = (status) => async (dispatch) => {
         dispatch(setStatus(status));
         dispatch(setError(null));
     } else {
-        dispatch(setError(response.data.messages[0] + ''));
+        dispatch(setError('updateStatus'+ response.data.messages[0] + ''));
     }
 };
 export const savePhoto = (file) => async (dispatch) => {
     const response = await profileAPI.savePhoto(file);
     if (response.data.resultCode === 0) {
-        dispatch(savePhotoSuccess(response.data.data.photos));
+        dispatch(savePhotoSuccess('savePhoto1'+response.data.data.photos));
         dispatch(setError(null));
     } else {
-        dispatch(setError(response.data.messages[0] + ''));
+        dispatch(setError('savePhoto2'+ response.data.messages[0] + ''));
     }
 };
 export const saveProfile = (profile) => async (dispatch, getState) => {

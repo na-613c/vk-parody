@@ -13,11 +13,13 @@ const MyPosts = React.memo(props => {
     let postElements = [...props.postData]
         .reverse()
         .map((post, index) => <Post key={index}
+                                    id={post.id}
+                                    deleteUserPost={props.deleteUserPost}
                                     photos={props.photos}
                                     message={post.message}
                                     likesCount={`${post.likesCount} ♥`}/>);
 
-    let addPost = (values) => props.addPost(values.newPostText);
+    let addPost = (values) => props.addUserPost(values.newPostText);
 
     return (<div>
             <div className="padding shadow">

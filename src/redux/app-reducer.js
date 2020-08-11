@@ -30,11 +30,13 @@ export const initializedSuccess = () => ({type: INITIALIZED_SUCCESS});
 export const setError = (error) => ({type: ERROR, error});
 
 export const initializeApp = () => (dispatch) => {
-    let promise = dispatch(getAuthUserData());
-    Promise.all([promise])
-        .then(() => {
-            dispatch(initializedSuccess());
-        })
+    // let promise = dispatch(getAuthUserData());
+    dispatch(getAuthUserData());
+    dispatch(initializedSuccess());
+    // Promise.all([promise])
+    //     .then(() => {
+    //         dispatch(initializedSuccess());
+    //     })
 };
 
 export default appReducer;

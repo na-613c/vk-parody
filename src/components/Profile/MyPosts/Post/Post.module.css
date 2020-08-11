@@ -9,7 +9,7 @@
 
 .content {
     display: grid;
-    grid-template-areas: "message" "like ";
+    grid-template-areas: "del" "message" "like ";
     height: 100%;
     width: 100%;
 }
@@ -29,4 +29,13 @@
     grid-area: message;
     padding-left: 20px;
     text-overflow: clip
+}
+
+.del {
+    grid-area: del;
+    width: 15px;
+    margin-left: auto;
+    justify-content: flex-end;
+    fill: #ff110a;
+    cursor: pointer;
 }

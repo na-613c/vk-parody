@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import MyPosts from './MyPosts';
-import {addPostActionCreator} from '../../../redux/profile-reducer'
+import {addUserPost, deleteUserPost} from '../../../redux/profile-reducer'
 import {connect} from "react-redux";
 import defaultPhotos from "../../../assets/images/user.jpg"
 
@@ -12,12 +12,6 @@ const mapStateToProps = (state) => {
     }
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addPost: (newPostText) => dispatch(addPostActionCreator(newPostText))
-    }
-};
-
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
+const MyPostsContainer = connect(mapStateToProps, {addUserPost, deleteUserPost})(MyPosts);
 
 export default MyPostsContainer;
